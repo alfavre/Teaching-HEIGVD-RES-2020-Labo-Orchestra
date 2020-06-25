@@ -8,11 +8,13 @@ const protocol = require('./musician-protovol');
 // the "imports"
 const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
+const moment = require('moment');
+const uuid = require('uuid');
 
 // the constants
 const TIME=1000;
-const PROTOCOL_PORT=;
-const PROTOCOL_MULTICAST_ADDRESS;
+const PROTOCOL_PORT=2020;
+const PROTOCOL_MULTICAST_ADDRESS='FIND A GOOD ADDRESS';
 
 
 // we should create a map with sound-instrument.
@@ -42,6 +44,7 @@ if (!instrumentSoundMap.has(instument)) {
 
 //we set the musician (it's a JSON Object)
 const musician = musicianPLays(instrument);
+// we get a str from that json
 const strMusician = JSON.stringify(musician);
 
 //play a lot
@@ -58,10 +61,10 @@ function playOnce(){
 // just a function unlike thermometer, returns an anonymous object (maybe do a musician class?)
 function musicianPLays(instrumentPlayed) {
     return {
-        uuid: 'placeholder',
+        uuid: uuid.v4(), // might be a problem as we are not in an object
         sound: instrumentSoundMap.get(instrumentPlayed),
         instrument: instrumentPlayed,
-        timeCreated: 'PLACEHOLEDER'
+        activeSince: moment().format(),
     }
 }
 

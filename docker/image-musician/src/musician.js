@@ -14,7 +14,7 @@ const uuid = require('uuid');
 // the constants
 const TIME=1000;
 const PROTOCOL_PORT=2020;
-const PROTOCOL_MULTICAST_ADDRESS='FIND A GOOD ADDRESS';
+const PROTOCOL_MULTICAST_ADDRESS='239.255.22.5'; // address stolen from thermometer
 
 
 // we should create a map with sound-instrument.

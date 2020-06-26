@@ -48,7 +48,7 @@ setInterval(checkAndRemoveMusician, TIME_FOR_CHECK);
 // this for each only works in ECMAScript2015 and over
 function checkAndRemoveMusician(){
     for(let [uuid,musician] of orchestra.entries()){
-        if(moment().diff(moment(musician.lastTimeHeard),'second')>=INACTIVITY_TIME)){
+        if(moment().diff(moment(musician.lastTimeHeard),'second')>=INACTIVITY_TIME){
             orchestra.delete(uuid);
             console.log('musician number '+uuid+' was not heard for a long time, get rid of him!');
         }

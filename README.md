@@ -165,7 +165,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 	```javascript
 	udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);
 	```
-	
+
   |
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**?  |
 | | *Enter your response here...* |

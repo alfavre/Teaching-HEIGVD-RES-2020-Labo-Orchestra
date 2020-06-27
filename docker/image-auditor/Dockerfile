@@ -1,7 +1,7 @@
-FROM node:12.18.1
+FROM node:lts
 
 COPY src /opt/app/
 WORKDIR /opt/app
 RUN npm install
 
-CMD ["node","/opt/app/auditor.js"]
+ENTRYPOINT ["node","/opt/app/auditor.js"]

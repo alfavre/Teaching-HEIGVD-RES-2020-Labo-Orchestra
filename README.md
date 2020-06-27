@@ -160,15 +160,15 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | ---  |
 |Question | With Node.js, how can we listen for UDP datagrams in a multicast group? |
-| | On peut s'abonner avec la commande `udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);`|
+| | On peut s'abonner avec la commande `udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);` a condiiton que le tcp socket ait été initialisé.|
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**?  |
-| | *Enter your response here...* |
+| | Il suffit de faire une map `const dico = new Map()` et y ajouter des "mots" ainsi: `dico.set('mot','definition')` c'est ce qu'on a fait pour la map `instrumentSoundMap` avec les instruments et leurs sons.|
 |Question | How can we use the `Moment.js` npm module to help us with **date manipulations** and formatting?  |
-| | *Enter your response here...* |
+| | on peut utiliser `moment().format()` qui retourne "maintenant" comme date dans ce format: `2020-06-27T16:35:55+00:00` de plus elle permet de nombreuses fonctions pratiques comme: `moment().diff(<valeur>,'second')` qui permete de facilement calculer par rapport a "maintenant" et a l'unité voulue (sconde, minute, jours ...).|
 |Question | When and how do we **get rid of inactive players**?  |
-| | *Enter your response here...* |
+| | on peut utiliser la methodes du dessus comme ça: `if(moment().diff(moment(musician.lastTimeHeard),'second')>=INACTIVITY_TIME){` pour chaque musicien, et le retirer de la map quand cette condition est remplie |
 |Question | How do I implement a **simple TCP server** in Node.js?  |
-| | *Enter your response here...* |
+| | On utilise `net` ainsi (il faut "l'importer" avant `const net = require('net');`): ![tulas](images/task4.png) |
 
 
 ## Task 5: package the "auditor" app in a Docker image

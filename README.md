@@ -161,9 +161,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | ---  | ---  |
 |Question | With Node.js, how can we listen for UDP datagrams in a multicast group? |
 | | On peut s'abonner avec la commande 
+	
 	```javascript
 	udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);
 	```
+	
   |
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**?  |
 | | *Enter your response here...* |

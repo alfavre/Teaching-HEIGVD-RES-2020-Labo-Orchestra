@@ -160,7 +160,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | ---  |
 |Question | With Node.js, how can we listen for UDP datagrams in a multicast group? |
-| | *Enter your response here...*  |
+| | On peut s'abonner avec la commande 
+	```javascript
+	udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);
+	```
+  |
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**?  |
 | | *Enter your response here...* |
 |Question | How can we use the `Moment.js` npm module to help us with **date manipulations** and formatting?  |
@@ -176,7 +180,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | How do we validate that the whole system works, once we have built our Docker image? |
-| | On peut lance le script validate ou on peut observer les packets dans wireshark, ou juste tester manuellement avec netcat ![salut](images/task5.png)|
+| | On peut lancer le script validate ou on peut observer les packets dans wireshark, ou juste tester manuellement avec netcat ![salut](images/task5.png)|
 
 
 ## Constraints

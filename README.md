@@ -106,13 +106,13 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | How can we represent the system in an **architecture diagram**, which gives information both about the Docker containers, the communication protocols and the commands? |
 | | ![architecture diagram](./images/architecture_diagram.png) |
 |Question | Who is going to **send UDP datagrams** and **when**? |
-| | *Enter your response here...* |
+| | C'est le/les musicien qui envoie des datagrammes UDP dès qu'il est démarré. Avec une intervale de 1 seconde. |
 |Question | Who is going to **listen for UDP datagrams** and what should happen when a datagram is received? |
-| | *Enter your response here...* |
+| | C'est l'auditeur qui écoute pour des datagrammes UDP et lorsqu'il en reçoit, il les ajoutes à son orchestre. |
 |Question | What **payload** should we put in the UDP datagrams? |
-| | *Enter your response here...* |
+| | La payload contient l'UUID, le son, l'instument et la date/heure à laquelle le musicien a commencé à jouer. Le tout est sous forme de chaîne de charactères. |
 |Question | What **data structures** do we need in the UDP sender and receiver? When will we update these data structures? When will we query these data structures? |
-| | *Enter your response here...* |
+| | Nous avons utilisé des map (constante pour le sender et variable pour le receiver). Dans le sender, la map nous sert à stocker les sons associés aux instruments et dans le receiver, elle nous sert à stocker les musiciens qui jouent.<br />La map n'est jamais mise à jour dans le sender, contrairement à celle dans le receiver qui est mise à jour à chaque fois qu'un datagramme UDP est reçu.<br />La map du sender est interrogée au démarrage du coneneur afin de savoir quel son envoyer. La map du receiver est interrogée à chaque fois qu'une connexion TCP est effectuée sur l'adresse de multicast 239.255.22.5:2205 afin d'envoyer un tableau JSON d'objets conenant les informations des musiciens actifs. |
 
 
 ## Task 2: implement a "musician" Node.js application

@@ -176,7 +176,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | How do we validate that the whole system works, once we have built our Docker image? |
-| | *Enter your response here...* |
+| | On peut lance le script validate ou on peut observer les packets dans wireshark, ou juste tester manuellement avec netcat ![salut](images/task5.png)|
 
 
 ## Constraints

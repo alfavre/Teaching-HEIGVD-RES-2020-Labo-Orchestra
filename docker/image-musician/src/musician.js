@@ -1,27 +1,13 @@
-// things for udp stolen from thermometer
-
-// this next line seems important we should look into it
-/*
-const protocol = require('./musician-protovol');
-*/
-console.log('salut c cool');
-
 // the "imports"
 const dgram = require('dgram');
 const moment = require('moment');
-
-console.log('salut c superseuper');
-
 const { v4: uuidv4 } = require('uuid');
 
-console.log('salut c 2');
 
 // the constants
-const TIME=1000;
-const PROTOCOL_PORT=2020;
-const PROTOCOL_MULTICAST_ADDRESS='239.255.22.5'; // address stolen from thermometer
-
-console.log('salut c 3');
+const TIME = 1000;
+const PROTOCOL_PORT = 2020;
+const PROTOCOL_MULTICAST_ADDRESS = '239.255.22.5'; // address stolen from thermometer
 
 // we should create a map with sound-instrument.
 const instrumentSoundMap = new Map();
@@ -50,22 +36,6 @@ if (!instrumentSoundMap.has(instrument)) {
     return;
 }
 
-//we set the musician (it's a JSON Object)
-const musician = musicianPLays(instrument);
-// we get a str from that json
-const strMusician = JSON.stringify(musician);
-
-//play a lot
-server.on("listening", () => {
-    setInterval(playOnce(), TIME);
-});
-
-
-function playOnce(){
-    server.send(strMusician, 0, strMusician.length,PROTOCOL_PORT,PROTOCOL_MULTICAST_ADDRESS);
-    console.log("sending the sweet power of jazz");
-}
-
 // just a function unlike thermometer, returns an anonymous object (maybe do a musician class?)
 function musicianPLays(instrumentPlayed) {
     return {
@@ -77,3 +47,18 @@ function musicianPLays(instrumentPlayed) {
 }
 
 
+
+//we set the musician (it's a JSON Object)
+const musician = musicianPLays(instrument);
+// we get a str from that json
+const strMusician = JSON.stringify(musician);
+
+//play a lot
+
+function playOnce() {
+    server.send(strMusician, 0, strMusician.length, PROTOCOL_PORT, PROTOCOL_MULTICAST_ADDRESS);
+    console.log("sending the sweet power of jazz");
+}
+
+
+setInterval(playOnce, TIME);

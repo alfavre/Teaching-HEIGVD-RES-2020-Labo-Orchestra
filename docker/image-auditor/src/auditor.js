@@ -7,13 +7,13 @@ const moment = require('moment');
 const PROTOCOL_TCP_PORT = 2205;
 const PROTOCOL_MULTICAST_PORT=2020;
 const PROTOCOL_MULTICAST_ADDRESS='239.255.22.5';
-const INACTIVITY_TIME=5;
-const TIME_FOR_CHECK=3000; //in millisecond
+const TIME_FOR_CHECK=1000; //in millisecond
+const INACTIVITY_TIME=5; // in seconds
 
 // var
 let orchestra = new Map();
 
-// stuff
+// server stuff
 const udpSocket = dgram.createSocket('udp4');
 const tcpServer = net.createServer();
 
@@ -28,19 +28,19 @@ udpSocket.bind(PROTOCOL_MULTICAST_PORT, function() {
 // adds a musician to the orchestra each time a msg is send
 udpSocket.on('message', function(msg, source) {
     console.log("Musician has arrived: " + msg + ". Source port: " + source.port);
-    addMusician(source);
+    addMusician(msg);
 });
 
 function addMusician(musician){
     const musicianJSON = JSON.parse(musician.toString());
+    console.log('salut c coolcool');
     orchestra.set( // set as you can hear the same musician more than once
         musicianJSON.uuid,{
-            uuid:musicianJSON.uuid,
             sound:musicianJSON.sound,
             instrument:musicianJSON.instrument,
             activeSince: musicianJSON.activeSince,
             lastTimeHeard: moment().format(),
-    })
+    });
 }
 
 setInterval(checkAndRemoveMusician, TIME_FOR_CHECK);
@@ -60,7 +60,7 @@ tcpServer.on('connection',(socket) => {
     let payload = [];
     for(let [uuid,musician] of orchestra.entries()){
         payload.push({
-            uuid:musician.uuid,
+            uuid:uuid,
             instrument: musician.instrument,
             activeSince:musician.activeSince,
         });

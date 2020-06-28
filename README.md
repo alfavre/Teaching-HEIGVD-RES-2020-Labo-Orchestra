@@ -142,17 +142,17 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | How do we **define and build our own Docker image**?|
-| | *Enter your response here...*  |
+| | Notre image docker est construite avec un `docker build` au niveau d'un Dockerfile, notre Dockerfile est plutot simple [dockerfile](https://github.com/alfavre/Teaching-HEIGVD-RES-2020-Labo-Orchestra/blob/master/docker/image-musician/Dockerfile) |
 |Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?  |
-| | *Enter your response here...*  |
+| | le mot `ENTRYPOINT` remplace le traditionel `CMD` et permet de traiter le container comme un executable (dans ce labo c'est utile pour passer des arguments lors du docker run) |
 |Question | After building our Docker image, how do we use it to **run containers**?  |
-| | *Enter your response here...*  |
+| | On a simplement a lancer la commande `docker run <nom de l'image>` on peut utiliser le `-d` pour run en arrière plan, `-p` pour un port mapping, et on peut meme parfois passer des arguments (si ont a bien mis `ENTRYPOINT`) on a ecrit de nombreux scritp pour ca (ceux en `run*`)  |
 |Question | How do we get the list of all **running containers**?  |
-| | *Enter your response here...*  |
+| | on fait `docker ps` pratique pour recuperer les noms des containers et les images sur lequelles ils sont basés  |
 |Question | How do we **stop/kill** one running container?  |
-| | *Enter your response here...*  |
+| | on fait `docker kill <nom du container>`, le nom est celui trouvé avec `docker ps` voir question du dessus |
 |Question | How can we check that our running containers are effectively sending UDP datagrams?  |
-| | *Enter your response here...*  |
+| | un moyen simple et de juste faire une capture wireshark et verifier les packets ![le groupe telegram de res est un shitshow, non seulement le ton employé par les assistants et le professeur n'est absolument pas serieux, mais cela encourage certain étudiants à se comporter comme des déchets, en particulier pour mal parler aux gens qui posent des questions sur le groupe (ce a quoi il sert), ce qui evidemment démotive d'autres étudiants à poser leurs questions, et comment oublier les messages sonores d'étudiants ivres qui n'ont pour seule réponses des danks réactions images des assistants. Aussi la blague récurrentes des assistants sur les étudiants qui vont redoubler ou comme ils disent "brûler". Enfin bref, c'est juste le type d'ambiance qu'on attend de fête au village de consanguins, pas d'un groupe telegram officiel pour un cours de la HEIG-VD. Mais j'ai vraiment l'impression que c'est moi qui me suit trompé, et que la heig, malgré tout ce qui est écrit dans le hall d'entrée, n'est qu'une énorme fète de la saucisse de fion-les-bains, 33 eme éditions.](images/task3.png)  |
 
 
 ## Task 4: implement an "auditor" Node.js application
@@ -160,13 +160,13 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | ---  |
 |Question | With Node.js, how can we listen for UDP datagrams in a multicast group? |
-| | On peut s'abonner avec la commande `udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);` a condiiton que le tcp socket ait été initialisé.|
+| | On peut s'abonner avec la commande `udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);` à condiiton que le tcp socket ait été initialisé.|
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**?  |
 | | Il suffit de faire une map `const dico = new Map()` et y ajouter des "mots" ainsi: `dico.set('mot','definition')` c'est ce qu'on a fait pour la map `instrumentSoundMap` avec les instruments et leurs sons.|
 |Question | How can we use the `Moment.js` npm module to help us with **date manipulations** and formatting?  |
-| | on peut utiliser `moment().format()` qui retourne "maintenant" comme date dans ce format: `2020-06-27T16:35:55+00:00` de plus elle permet de nombreuses fonctions pratiques comme: `moment().diff(<valeur>,'second')` qui permete de facilement calculer par rapport a "maintenant" et a l'unité voulue (sconde, minute, jours ...).|
-|Question | When and how do we **get rid of inactive players**?  |
-| | on peut utiliser la methodes du dessus comme ça: `if(moment().diff(moment(musician.lastTimeHeard),'second')>=INACTIVITY_TIME){` pour chaque musicien, et le retirer de la map quand cette condition est remplie |
+| | on peut utiliser `moment().format()` qui retourne "maintenant" comme date dans ce format: `2020-06-27T16:35:55+00:00` de plus elle permet de nombreuses fonctions pratiques comme: `moment().diff(<valeur>,'second')` qui permettent de facilement calculer par rapport à "maintenant" et à l'unité voulue (seconde, minute, jours ...).|
+|Question | When and how do we **get rid of inactive players**?  
+| | on peut utiliser la methode du dessus comme ça: `if(moment().diff(moment(musician.lastTimeHeard),'second')>=INACTIVITY_TIME){` pour chaque musicien, et le retirer de la map quand cette condition est remplie |
 |Question | How do I implement a **simple TCP server** in Node.js?  |
 | | On utilise `net` ainsi (il faut "l'importer" avant `const net = require('net');`): ![tulas](images/task4.png) |
 
@@ -176,7 +176,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | How do we validate that the whole system works, once we have built our Docker image? |
-| | On peut lancer le script validate ou on peut observer les packets dans wireshark, ou juste tester manuellement avec netcat ![salut](images/task5.png)|
+| | On peut lancer le script validate ou on peut observer les packets dans wireshark, ou juste tester manuellement avec netcat, voila une image d'un packet tcp qui confirme bien que tout s'est passé sans problèmes ![salut](images/task5.png)|
 
 
 ## Constraints

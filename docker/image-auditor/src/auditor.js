@@ -33,7 +33,6 @@ udpSocket.on('message', function(msg, source) {
 
 function addMusician(musician){
     const musicianJSON = JSON.parse(musician.toString());
-    console.log('salut c coolcool');
     orchestra.set( // set as you can hear the same musician more than once
         musicianJSON.uuid,{
             sound:musicianJSON.sound,

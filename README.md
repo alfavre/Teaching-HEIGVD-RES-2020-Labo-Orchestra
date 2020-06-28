@@ -120,21 +120,21 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | In a JavaScript program, if we have an object, how can we **serialize it in JSON**? |
-| | *Enter your response here...*  |
+| | On peut serialiser un object en JSON avec `JSON.stringify( <objet ou array javascript>)`  |
 |Question | What is **npm**?  |
 | | *Enter your response here...*  |
 |Question | What is the `npm install` command and what is the purpose of the `--save` flag?  |
-| | *Enter your response here...*  |
+| | `npm install <dépendance>` installe la dépendance, et l'ajoute dans le fichier package.JSON, `npm install` installe toutes les dépendances spécifiées dans package.JSON. Le flag `--save` sert à enregistrer la dépendance dans le package.JSON (ce qu'il fait déjà de base), il n'est donc pas très utile, et nous ne l'avons jamais utilisé dans notre labo|
 |Question | How can we use the `https://www.npmjs.com/` web site?  |
-| | *Enter your response here...*  |
+| | C'est un site web qui liste des packages nodes, c'est très pratique pour trouver ce qui nous interresse (il y a des choses gratuites, d'autres non) (et pour ne pas avoir beosin de réinventer la roue), ici ,par exemple, la page pour [la dépendance moment qu'on a utilisée dans notre labo](https://www.npmjs.com/package/moment), il y a evidement une doc pour chaque package |
 |Question | In JavaScript, how can we **generate a UUID** compliant with RFC4122? |
-| | *Enter your response here...*  |
+| | on peut soit le faire à la main (réinvente la roue) ou importer le package `uuid` avec `const { v4: uuidv4 } = require('uuid');` et créer un uuid avec `uuidv4()` |
 |Question | In Node.js, how can we execute a function on a **periodic** basis? |
-| | *Enter your response here...*  |
+| | On utilise la methode `setInterval(<fonction_appelée>,<temps>)` qui va appeller la fonction chaque temps (en milisecondes) |
 |Question | In Node.js, how can we **emit UDP datagrams**? |
-| | *Enter your response here...*  |
+| | on peut utiliser `dgram` ainsi: `const dgram = require('dgram');` et creer un "server ainsi: `const server = dgram.createSocket('udp4')`, et finalement emettre aisni: `server.send(msg, 0, msg.length, PROTOCOL_PORT, PROTOCOL_MULTICAST_ADDRESS);` , c'est ce qu'on a fait en se basant sur le thermomètre|
 |Question | In Node.js, how can we **access the command line arguments**? |
-| | *Enter your response here...*  |
+| | "similairement" à `c`, on peut acceder aux arguments avec la fonction `process.argv[<2+>]` les arguments 0 et 1 sont juste nodes et le chemin du script, ils ne sont pas intéressant pour ce labo, c'est pour cela qu'on commence au 2 |
 
 
 ## Task 3: package the "musician" app in a Docker image

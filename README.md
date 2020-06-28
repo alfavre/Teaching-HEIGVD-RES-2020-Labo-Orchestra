@@ -122,19 +122,19 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | In a JavaScript program, if we have an object, how can we **serialize it in JSON**? |
 | | On peut serialiser un object en JSON avec `JSON.stringify( <objet ou array javascript>)`  |
 |Question | What is **npm**?  |
-| | D'aprés wikipedia :`npm est le gestionnaire de paquets officiel de Node.js. Depuis la version 0.6.3 de Node.js, npm fait partie de l'environnement et est donc automatiquement installé par défaut` source: [npm](https://fr.wikipedia.org/wiki/Npm)  |
+| | Npm pour Node Package Manager, est le gestionnaire de packets officiel de Node.js.<br />Wikipedia précise :`Depuis la version 0.6.3 de Node.js, npm fait partie de l'environnement et est donc automatiquement installé par défaut` source: [](https://fr.wikipedia.org/wiki/Npm)<br /> |
 |Question | What is the `npm install` command and what is the purpose of the `--save` flag?  |
-| | `npm install <dépendance>` installe la dépendance, et l'ajoute dans le fichier package.JSON, `npm install` installe toutes les dépendances spécifiées dans package.JSON. Le flag `--save` sert à enregistrer la dépendance dans le package.JSON (ce qu'il fait déjà de base), il n'est donc pas très utile, et nous ne l'avons jamais utilisé dans notre labo|
+| | Cette commande permet d'installer toutes les dépendances contenues dans le fichier JSON package.json, elle permet aussi d'en ajouter en précisant le nom du package en paramètre.<br />Le flag `--save` permettait de préciser qu'on voulait ajouter le package au ficher package.json. Toutefois npm install le fait par défaut maintenant, il n'est donc pas très utile et nous ne l'avons pas utilisé dans le labo |
 |Question | How can we use the `https://www.npmjs.com/` web site?  |
-| | C'est un site web qui liste des packages nodes, c'est très pratique pour trouver ce qui nous interresse (il y a des choses gratuites, d'autres non) (et pour ne pas avoir beosin de réinventer la roue), ici ,par exemple, la page pour [la dépendance moment qu'on a utilisée dans notre labo](https://www.npmjs.com/package/moment), il y a evidement une doc pour chaque package |
+| | C'est un site web qui liste des packages nodes, c'est très pratique pour trouver ce qui nous interresse (il y a des choses gratuites, d'autres non) (et pour ne pas avoir besoin de réinventer la roue), ici ,par exemple, la page pour [la dépendance moment qu'on a utilisée dans notre labo](https://www.npmjs.com/package/moment), il y a évidement une doc pour chaque package.<br />Comment ça marche : <br />On recherche le package qu'on veut installer avec npm  :<br />![npm_recherche](./images/npm_recherche.PNG)<br />Ensuite on choisis le package qui nous intéresse :<br />![npm_choix](./images/npm_choix.PNG) |
 |Question | In JavaScript, how can we **generate a UUID** compliant with RFC4122? |
-| | on peut soit le faire à la main (réinvente la roue) ou importer le package `uuid` avec `const { v4: uuidv4 } = require('uuid');` et créer un uuid avec `uuidv4()` |
+| | On peut soit le faire à la main (réinvente la roue) ou importer le package `uuid` avec `const { v4: uuidv4 } = require('uuid');` et créer un uuid avec `uuidv4()` |
 |Question | In Node.js, how can we execute a function on a **periodic** basis? |
 | | On utilise la methode `setInterval(<fonction_appelée>,<temps>)` qui va appeller la fonction chaque temps (en milisecondes) |
 |Question | In Node.js, how can we **emit UDP datagrams**? |
-| | on peut utiliser `dgram` ainsi: `const dgram = require('dgram');` et creer un "server ainsi: `const server = dgram.createSocket('udp4')`, et finalement emettre aisni: `server.send(msg, 0, msg.length, PROTOCOL_PORT, PROTOCOL_MULTICAST_ADDRESS);` , c'est ce qu'on a fait en se basant sur le thermomètre|
+| | On peut utiliser `dgram` ainsi: `const dgram = require('dgram');` et creer un "server" ainsi: `const server = dgram.createSocket('udp4')`, et finalement émettre ainsi: `server.send(msg, 0, msg.length, PROTOCOL_PORT, PROTOCOL_MULTICAST_ADDRESS);` , c'est ce qu'on a fait en se basant sur le thermomètre |
 |Question | In Node.js, how can we **access the command line arguments**? |
-| | "similairement" à `c`, on peut acceder aux arguments avec la fonction `process.argv[<2+>]` les arguments 0 et 1 sont juste nodes et le chemin du script, ils ne sont pas intéressant pour ce labo, c'est pour cela qu'on commence au 2 |
+| | "Similairement" à `c`, on peut acceder aux arguments avec la fonction `process.argv[<2+>]` les arguments 0 et 1 sont juste nodes et le chemin du script, ils ne sont pas intéressant pour ce labo, c'est pour cela qu'on commence au 2 |
 
 
 ## Task 3: package the "musician" app in a Docker image
@@ -142,17 +142,17 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | --- |
 |Question | How do we **define and build our own Docker image**?|
-| | Notre image docker est construite avec un `docker build` au niveau d'un Dockerfile, notre Dockerfile est plutot simple [dockerfile](https://github.com/alfavre/Teaching-HEIGVD-RES-2020-Labo-Orchestra/blob/master/docker/image-musician/Dockerfile) |
+| | Notre image docker est construite avec un `docker build` au niveau du Dockerfile, le notre  est plutot simple [dockerfile](./docker/image-musician/Dockerfile) |
 |Question | How can we use the `ENTRYPOINT` statement in our Dockerfile?  |
-| | le mot `ENTRYPOINT` remplace le traditionel `CMD` et permet de traiter le container comme un executable (dans ce labo c'est utile pour passer des arguments lors du docker run) |
+| | Le mot `ENTRYPOINT` remplace le traditionel `CMD` et permet de traiter le container comme un executable (dans ce labo c'est utile pour passer des arguments lors du docker run) |
 |Question | After building our Docker image, how do we use it to **run containers**?  |
-| | On a simplement a lancer la commande `docker run <nom de l'image>` on peut utiliser le `-d` pour run en arrière plan, `-p` pour un port mapping, et on peut meme parfois passer des arguments (si ont a bien mis `ENTRYPOINT`) on a ecrit de nombreux scritp pour ca (ceux en `run*`)  |
+| | On a simplement à lancer la commande `docker run <nom de l'image>` on peut utiliser le `-d` pour run en arrière plan, `-p` pour un port mapping, et on peut meme parfois passer des arguments (si ont a bien mis `ENTRYPOINT`) on a ecrit de nombreux scritp pour ca (ceux en `run*`) |
 |Question | How do we get the list of all **running containers**?  |
-| | on fait `docker ps` pratique pour recuperer les noms des containers et les images sur lequelles ils sont basés  |
+| | On fait `docker ps`, c'est très pratique pour recuperer les noms des containers et les images sur lequelles ils sont basés |
 |Question | How do we **stop/kill** one running container?  |
-| | on fait `docker kill <nom du container>`, le nom est celui trouvé avec `docker ps` voir question du dessus |
+| | On fait `docker stop/kill <nom du container>`, le nom est celui trouvé avec `docker ps` (voir question du dessus) |
 |Question | How can we check that our running containers are effectively sending UDP datagrams?  |
-| | un moyen simple et de juste faire une capture wireshark et verifier les packets ![le groupe telegram de res est un shitshow, non seulement le ton employé par les assistants et le professeur n'est absolument pas serieux, mais cela encourage certain étudiants à se comporter comme des déchets, en particulier pour mal parler aux gens qui posent des questions sur le groupe (ce a quoi il sert), ce qui evidemment démotive d'autres étudiants à poser leurs questions, et comment oublier les messages sonores d'étudiants ivres qui n'ont pour seule réponses des danks réactions images des assistants. Aussi la blague récurrentes des assistants sur les étudiants qui vont redoubler ou comme ils disent "brûler". Enfin bref, c'est juste le type d'ambiance qu'on attend de fête au village de consanguins, pas d'un groupe telegram officiel pour un cours de la HEIG-VD. Mais j'ai vraiment l'impression que c'est moi qui me suit trompé, et que la heig, malgré tout ce qui est écrit dans le hall d'entrée, n'est qu'une énorme fète de la saucisse de fion-les-bains, 33 eme éditions.](images/task3.png)  |
+| | Un moyen simple et de juste faire une capture wireshark et verifier les packets ![le groupe telegram de res est un shitshow, non seulement le ton employé par les assistants et le professeur n'est absolument pas serieux, mais cela encourage certain étudiants à se comporter comme des déchets, en particulier pour mal parler aux gens qui posent des questions sur le groupe (ce a quoi il sert), ce qui evidemment démotive d'autres étudiants à poser leurs questions, et comment oublier les messages sonores d'étudiants ivres qui n'ont pour seule réponses des danks réactions images des assistants. Aussi la blague récurrentes des assistants sur les étudiants qui vont redoubler ou comme ils disent "brûler". Enfin bref, c'est juste le type d'ambiance qu'on attend de fête au village de consanguins, pas d'un groupe telegram officiel pour un cours de la HEIG-VD. Mais j'ai vraiment l'impression que c'est moi qui me suit trompé, et que la heig, malgré tout ce qui est écrit dans le hall d'entrée, n'est qu'une énorme fète de la saucisse de fion-les-bains, 33 eme éditions.](images/task3.png) |
 
 
 ## Task 4: implement an "auditor" Node.js application
@@ -160,11 +160,11 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 | #  | Topic |
 | ---  | ---  |
 |Question | With Node.js, how can we listen for UDP datagrams in a multicast group? |
-| | On peut s'abonner avec la commande `udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);` à condiiton que le tcp socket ait été initialisé.|
+| | On peut s'abonner avec la commande `udpSocket.addMembership(PROTOCOL_MULTICAST_ADDRESS);` à conditon que le socket UDP ait été initialisé. |
 |Question | How can we use the `Map` built-in object introduced in ECMAScript 6 to implement a **dictionary**?  |
-| | Il suffit de faire une map `const dico = new Map()` et y ajouter des "mots" ainsi: `dico.set('mot','definition')` c'est ce qu'on a fait pour la map `instrumentSoundMap` avec les instruments et leurs sons.|
+| | Il suffit de créer une map `const dico = new Map()` et y ajouter des "mots" ainsi: `dico.set('mot','definition')`. C'est ce qu'on a fait pour la map `instrumentSoundMap` avec les instruments et leurs sons. |
 |Question | How can we use the `Moment.js` npm module to help us with **date manipulations** and formatting?  |
-| | on peut utiliser `moment().format()` qui retourne "maintenant" comme date dans ce format: `2020-06-27T16:35:55+00:00` de plus elle permet de nombreuses fonctions pratiques comme: `moment().diff(<valeur>,'second')` qui permettent de facilement calculer par rapport à "maintenant" et à l'unité voulue (seconde, minute, jours ...).|
+| | On peut utiliser `moment().format()` qui retourne "maintenant" comme date dans ce format: `2020-06-27T16:35:55+00:00` de plus elle permet de nombreuses fonctions pratiques comme: `moment().diff(<valeur>,'second')` qui permettent de facilement calculer par rapport à "maintenant" et à l'unité voulue (seconde, minute, jours ...). |
 |Question | When and how do we **get rid of inactive players**?  
 | | on peut utiliser la methode du dessus comme ça: `if(moment().diff(moment(musician.lastTimeHeard),'second')>=INACTIVITY_TIME){` pour chaque musicien, et le retirer de la map quand cette condition est remplie |
 |Question | How do I implement a **simple TCP server** in Node.js?  |

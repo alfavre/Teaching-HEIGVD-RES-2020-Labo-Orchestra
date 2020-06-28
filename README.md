@@ -122,7 +122,7 @@ When you connect to the TCP interface of the **Auditor**, you should receive an 
 |Question | In a JavaScript program, if we have an object, how can we **serialize it in JSON**? |
 | | On peut serialiser un object en JSON avec `JSON.stringify( <objet ou array javascript>)`  |
 |Question | What is **npm**?  |
-| | *Enter your response here...*  |
+| | D'aprés wikipedia :`npm est le gestionnaire de paquets officiel de Node.js. Depuis la version 0.6.3 de Node.js, npm fait partie de l'environnement et est donc automatiquement installé par défaut` source: [npm](https://fr.wikipedia.org/wiki/Npm)  |
 |Question | What is the `npm install` command and what is the purpose of the `--save` flag?  |
 | | `npm install <dépendance>` installe la dépendance, et l'ajoute dans le fichier package.JSON, `npm install` installe toutes les dépendances spécifiées dans package.JSON. Le flag `--save` sert à enregistrer la dépendance dans le package.JSON (ce qu'il fait déjà de base), il n'est donc pas très utile, et nous ne l'avons jamais utilisé dans notre labo|
 |Question | How can we use the `https://www.npmjs.com/` web site?  |
